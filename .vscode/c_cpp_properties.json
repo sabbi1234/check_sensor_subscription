@@ -1,0 +1,35 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/greenquest/gazebo_test/install/turtlebot3_gazebo/include/**",
+        "/home/greenquest/gazebo_test/install/turtlebot3_fake_node/include/**",
+        "/home/greenquest/gazebo_test/install/nav2_input_waypoint_plugin/include/**",
+        "/home/greenquest/gazebo_test/install/aruco_opencv_msgs/include/**",
+        "/home/greenquest/ros2_ws/install/opennav_docking/include/**",
+        "/home/greenquest/ros2_ws/install/opennav_docking_core/include/**",
+        "/home/greenquest/ros2_ws/install/opennav_docking_bt/include/**",
+        "/home/greenquest/ros2_ws/install/opennav_docking_msgs/include/**",
+        "/home/greenquest/ros2_ws/install/hoverboard_hardware_interface/include/**",
+        "/home/greenquest/ros2_ws/install/graceful_controller/include/**",
+        "/home/greenquest/test/install/ros2_aruco_interfaces/include/**",
+        "/home/greenquest/test/install/apriltag_msgs/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/greenquest/gazebo_test/src/auco_pose/include/**",
+        "/home/greenquest/gazebo_test/src/nav2_input_waypoint_plugin/include/**",
+        "/home/greenquest/gazebo_test/src/ros_aruco_opencv/aruco_opencv/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

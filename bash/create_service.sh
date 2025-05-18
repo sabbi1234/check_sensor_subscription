@@ -1,16 +1,20 @@
 #!/bin/bash
 set -e  # Exit on any error
 
-# ===== CONFIGURATION =====
-SERVICE_NAME="sensor_subscription"  # Change this to your desired service name
-WORKING_NAME="gazebo_test"  # Change this to your working directory name
+# ===== AUTOMATIC PATH CONFIGURATION =====
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+WORKING_DIR="$(dirname "$(dirname "$(dirname "$SCRIPT_DIR")")")"  # Goes up 3 levels from script
 USER_NAME=$(whoami)
-WORKING_DIR="/home/$USER_NAME/$WORKING_NAME"  # Change this to your working directory
-EXEC_START="/home/$USER_NAME/$WORKING_NAME/src/check_sensor_subscription/bash/check_sensor.sh"
+SERVICE_NAME="sensor_subscription"  # Change service name if needed
 
+# Verify paths
+if [ ! -d "$WORKING_DIR" ]; then
+    echo "Error: Could not determine working directory!" >&2
+    exit 1
+fi
 
-
-# =========================
+EXEC_START="$SCRIPT_DIR/check_sensor.sh"  # Assumes script is in same directory
+# ========================================
 
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 
@@ -19,6 +23,13 @@ echo "Service Name: $SERVICE_NAME"
 echo "User: $USER_NAME"
 echo "Working Directory: $WORKING_DIR"
 echo "Executable: $EXEC_START"
+echo "Detected Script Location: $SCRIPT_DIR"
+
+# Verify executable exists
+if [ ! -f "$EXEC_START" ]; then
+    echo "Error: Executable script not found at $EXEC_START" >&2
+    exit 1
+fi
 
 # Create service file
 echo -e "\n[1/3] Creating service file at $SERVICE_FILE..."
